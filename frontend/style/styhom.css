@@ -1,0 +1,143 @@
+*{
+    font-family: 'Open Sans', sans-serif;
+
+
+
+    font-size: large;
+
+    
+}
+body{
+height: 400vh;
+    width: auto;
+    margin: 0%;
+}
+#main{
+   
+    width: 100%;
+   
+}
+header{
+     
+
+
+  
+   position: fixed;
+  background-color: rgb(255, 255, 255);
+   width: 100%;
+    display: flex;
+    z-index: 1000; 
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+#logo{
+
+    
+      mix-blend-mode: multiply; 
+  
+   
+     width: 200px;   
+  height: auto;
+
+}
+
+.a{
+    margin: 50px;
+     text-decoration: none;
+     color: black;
+
+}
+.logdiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 40px;
+    width: 90px;
+    margin: 14px;
+    
+    
+        border: 2px ;
+  border-radius: 20px;
+  
+}
+#sin:hover{
+  background-color: white;
+  
+
+    
+}
+#log{
+   color:  blue;
+}
+#sin{
+    background-color: blue;
+   
+}
+
+
+#login{
+  
+
+    display: flex;
+    justify-content: center;
+
+}
+.alogin{
+  
+    width: 70px;
+     text-decoration: none;
+     color: white;
+
+}
+#vid{
+    width: 100%;
+    height: px;
+    object-fit: cover;    
+    object-position: center;
+}
+.hero {
+    height: 100vh; 
+    background-image: url("../images/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+
+
+.btn {
+  position: absolute;
+  top: 70%;           
+  left: 50%;            
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  font-size: 18px;
+color: rgb(0, 0, 0);
+background-image:  url("../images/Group\ 1.png" ) ;
+background-repeat: no-repeat;       
+background-size: contain;           
+background-position: left;
+ border: 1;
+  background-color: rgba(255, 187, 187, 0);
+  
+  border-radius: 20px;
+  cursor: pointer;
+  
+}
+.search:not(:placeholder-shown) {
+  background: transparent; 
+  outline: none ;
+}
+.btn:hover {
+
+  background-color: rgba(255, 255, 255, 0.8);
+  background: none;
+  
+}
+
+
+
