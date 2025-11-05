@@ -7,7 +7,14 @@
 
     
 }
+
+
+::-webkit-scrollbar {
+  display: none;
+}
 body{
+   background-color: white;
+  width: 500%;
 height: 400vh;
     width: auto;
     margin: 0%;
@@ -138,6 +145,7 @@ background-position: left;
   background: none;
   
 }
+
 
 
 
