@@ -7,30 +7,35 @@
 
     
 }
-
+.top{
+      display: flex;
+    align-items: center;
+  font-family: auto;
+  font-size: xx-large;
+  margin: 50px;
+}
 
 ::-webkit-scrollbar {
   display: none;
 }
 body{
-   background-color: white;
+  position: absolute;
+  z-index: 1000;
+   background-color: #ecfffb;
   width: 500%;
 height: 400vh;
     width: auto;
     margin: 0%;
 }
-#main{
-   
-    width: 100%;
-   
-}
+
 header{
+  margin-top: 20px;
      
 
 
-  
-   position: fixed;
-  background-color: rgb(255, 255, 255);
+  position: absolute;
+   
+  background-color: rgba(255, 255, 255, 0);
    width: 100%;
     display: flex;
     z-index: 1000; 
@@ -43,18 +48,20 @@ header{
 #logo{
 
     
-      mix-blend-mode: multiply; 
+      
   
    
-     width: 200px;   
+     width: 250px;   
   height: auto;
 
 }
 
 .a{
+  font-size: 20px;
+  font-family: monospace;
     margin: 50px;
      text-decoration: none;
-     color: black;
+     color: white;
 
 }
 .logdiv{
@@ -70,19 +77,11 @@ header{
   border-radius: 20px;
   
 }
-#sin:hover{
-  background-color: white;
-  
 
-    
-}
 #log{
    color:  blue;
 }
-#sin{
-    background-color: blue;
-   
-}
+
 
 
 #login{
@@ -93,10 +92,19 @@ header{
 
 }
 .alogin{
+  font-size: 20px;
+  font-family: monospace;
   
-    width: 70px;
+  background-color: white;
+  border-radius: 40px;
+    width: 100px;
+    height: 45px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
      text-decoration: none;
-     color: white;
+     color: blue;
+    
 
 }
 #vid{
@@ -105,46 +113,32 @@ header{
     object-fit: cover;    
     object-position: center;
 }
-.hero {
-    height: 100vh; 
-    background-image: url("../images/bg.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
-}
 
 
 
 .btn {
   position: absolute;
-  top: 70%;           
-  left: 50%;            
-  transform: translate(-50%, -50%);
-  padding: 10px 20px;
-  font-size: 18px;
-color: rgb(0, 0, 0);
-background-image:  url("../images/Group\ 1.png" ) ;
-background-repeat: no-repeat;       
-background-size: contain;           
-background-position: left;
- border: 1;
-  background-color: rgba(255, 187, 187, 0);
+
+    top: 150px;
+    left: 80px;
+    font-size: 60px;
+    font-family: fantasy;
   
-  border-radius: 20px;
-  cursor: pointer;
+      color: #f98f22;
   
 }
 .search:not(:placeholder-shown) {
   background: transparent; 
   outline: none ;
-}
-.btn:hover {
 
-  background-color: rgba(255, 255, 255, 0.8);
-  background: none;
-  
 }
+.vid{
+  width: 100%;
+  mix-blend-mode: multiply; 
+  height: 600px;
+  object-fit: cover;
+}
+
 
 
 
