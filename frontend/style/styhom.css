@@ -19,8 +19,7 @@
   display: none;
 }
 body{
-  position: absolute;
-  z-index: 1000;
+  
    background-color: #ecfffb;
   width: 500%;
 height: 400vh;
