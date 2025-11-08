@@ -142,7 +142,7 @@ main{
   display: flex;
   justify-content: center;
 }
-.dbutton button{
+#submit{
   font-family:  monospace;
   font-size: 15px;
   color: blue;
