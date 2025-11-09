@@ -2,10 +2,13 @@
 
 body{
     margin: 0;
-    background-image: url("../../images/bg.png");
-    width: 100%;
+background-color: rgb(212 249 98 / 92%);    width: 100%;
     height: 100vh;
     
+}
+
+*{
+  font-family: system-ui;
 }
 header{
  margin-top: 20px;
@@ -46,43 +49,7 @@ header{
   height: auto;
 
 }
-.a{
-  font-size: 20px;
-  font-family: monospace;
-    margin: 50px;
-     text-decoration: none;
-     color: white;
 
-}
-.logdiv{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 40px;
-    width: 90px;
-    margin: 14px;
-    
-    
-        border: 2px ;
-  border-radius: 20px;
-  
-}
-.alogin{
-  font-size: 20px;
-  font-family: monospace;
-  
-  background-color: white;
-  border-radius: 40px;
-    width: 100px;
-    height: 45px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-     text-decoration: none;
-     color: blue;
-    
-
-}
 main{
   display: grid;
   justify-content: center;
@@ -96,17 +63,52 @@ border-radius: 12px;
   background-color: white;
 }
 .kool{
-   border-radius: 12px  30% 30% 12px;
-  width: 400px;
-  background-color: slateblue;
+
+    border-radius: 12px 30% 30% 12px;
+    width: 400px;
+    background-color: slateblue;
     display: grid;
-    text-align: center; 
-    align-items: center; 
- height: 80vh;
+    text-align: center;
+    align-items: baseline;
+    height: 80vh;
+    justify-content: space-around;
+    align-content: center;
+    justify-items: center;
 }
 .kool h1{
-  height: 12px;
+
+    height: 12px;
+    color: white;
 }
+.kool p{
+  font-size: small;
+  margin: 20px;
+  color: white;
+}
+.kool button{
+  border-radius: 8px;
+  border: 2px solid white;
+  outline: none;
+display: grid;
+    text-align: center;
+    justify-content: center;
+    width: 140px;
+    height: 40px;
+    align-items: center;
+    justify-items: stretch;
+    background: none;
+    
+}
+.kool button a{
+
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+    background: none;
+ 
+}
+
+
 
 .singup{
    height: 80vh;
@@ -125,7 +127,7 @@ border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: blue;
+  color: black;
   
   
 
@@ -134,10 +136,10 @@ border-radius: 12px;
 }
 .singup input{
   outline: none;
-  background-color: rgba(116, 111, 111, 0.653);
+  background-color: rgba(116, 111, 111, 0.404);
   border: 0;
   width: 250px;
-  height: 35px;
+  height: 40px;
   border-radius: 3px;
   padding-left: 12px;
  
@@ -152,7 +154,7 @@ border-radius: 12px;
 #submit{
   background-color: slateblue;
   padding-left: 0%;
-  font-family:  monospace;
+ 
   font-size: 15px;
   color: white;
   border: 0;
