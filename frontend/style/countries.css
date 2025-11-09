@@ -10,6 +10,11 @@ height: 400vh;
     width: auto;
     margin: 0%;
 }
+form{
+    display: grid;
+    justify-content: space-around;
+    margin-bottom: 100px;
+}
 
 
 #kal{
@@ -143,6 +148,10 @@ header{
      width: 250px;   
   height: auto;
 }
+.fa-search:before {
+    color: black;
+    content: "\f002";
+}
 #kal > h1{
   position: absolute;
   top: 30%;
@@ -191,6 +200,7 @@ display: inline-flex;
     background: none;
     width: 200px;
     height: 50px;
+    color: black;
     
 }
 input[type="search"]::-webkit-search-cancel-button {
@@ -220,77 +230,14 @@ input[type="search"]::-webkit-search-cancel-button {
     display: flex;
     align-items: center;
 
+
 }
-.contries{
+
+
+
     
-    color: white;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
-    width: 150px;
-    height: 40px;
-    align-items: center;
-    border-radius: 17px;
-    background-color: blue;
-    margin: 0 auto;
-    right: 18px;
-}
-.not{
-    color: white;
-    position: relative;
-    border-radius: 17px 0 20px 0 ;
-  background-color: blue;
-    width: 60px;
-    justify-content: space-around;
-    display: flex;
-    align-items: center;
-    bottom: 8px;
-    height: 40px;
-    
-}
-.mform {
-  isolation: isolate;
-  overflow: hidden;
-  border-radius: 12px;
-  width: 100%;
-  height: 250px;
-  position: relative;
-}
 
- .slides {
-      position: relative;
-      width: 600px;   /* يمكنك تغيير العرض */
-      height: 350px;  /* يمكنك تغيير الارتفاع */
-      overflow: hidden;
-      border-radius: 15px;
-    }
 
-    .slides img {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      animation: fade 32s infinite; /* عدد الثواني = 8 صور × 4 ثوانٍ لكل واحدة */
-    }
-
-    /* ترتيب الصور وتحديد زمن كل واحدة */
-    .slides img:nth-child(1) { animation-delay: 0s; }
-    .slides img:nth-child(2) { animation-delay: 4s; }
-    .slides img:nth-child(3) { animation-delay: 8s; }
-    .slides img:nth-child(4) { animation-delay: 12s; }
-    .slides img:nth-child(5) { animation-delay: 16s; }
-    .slides img:nth-child(6) { animation-delay: 20s; }
-    .slides img:nth-child(7) { animation-delay: 24s; }
-    .slides img:nth-child(8) { animation-delay: 28s; }
-
-    /* حركة الظهور والاختفاء */
-    @keyframes fade {
-      0%, 100% { opacity: 0; }
-      10%, 40% { opacity: 1; }  /* تبقى ظاهرة قليلاً */
-      50% { opacity: 0; }       /* تبدأ تختفي */
-    }
 .fbut{
 display: flex;
 justify-content: center;
@@ -363,46 +310,6 @@ color: black;
   align-items: stretch;
 }
 
-.feature-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
-}
-
-.feature-card i {
-  font-size: 2.5rem;
-  color: #00bcd4;
-  margin-bottom: 15px;
-}
-
-.feature-card h3 {
-  font-size: 1.25rem;
-  color: #222;
-  margin-bottom: 10px;
-}
-
-.feature-card p {
-  font-size: 0.95rem;
-  color: #666;
-  line-height: 1.6;
-}
-
-
-@media (max-width: 768px) {
-  .why-choose-us {
-    padding: 60px 20px;
-  }
-  .section-title {
-    font-size: 2rem;
-  }
-}
 
 
 /* Footer Styles */
@@ -574,3 +481,126 @@ color: black;
 
 
 
+
+
+
+
+
+        .country-card {
+            
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .country-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .country-image-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .country-flag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 3rem;
+            z-index: 10;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+            animation: fadeFlag 4s ease-in-out infinite;
+        }
+
+        .country-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            
+        }
+
+      
+
+        .country-info {
+            padding: 1.5rem;
+        }
+
+        .country-name {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .country-capital {
+            display: flex;
+            align-items: center;
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .country-capital::before {
+            content: "🏛️";
+            margin-right: 0.5rem;
+        }
+
+        .country-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: #666;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+
+        .stat-value {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .country-description {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .explore-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s, transform 0.2s;
+        }
+
+        .explore-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        
