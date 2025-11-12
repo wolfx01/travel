@@ -4,7 +4,7 @@
         
         .hero {
             background: 
-                        url('https://images.pexels.com/photos/8828418/pexels-photo-8828418.jpeg') center/cover;
+                        url('https://pohcdn.com/sites/default/files/styles/node__blog_post__bp_banner__blog_post_banner/public/2020-12/Greece.jpg') center/cover;
             color: white;
             text-align: center;
             padding: 6rem 2rem 4rem;
@@ -13,12 +13,14 @@
         }
 
         .hero h1 {
+            color: black;
             font-size: 3rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero p {
+              color: black;
             font-size: 1.2rem;
             max-width: 600px;
             margin: 0 auto;
@@ -112,7 +114,8 @@
         }
 
         .view-details-btn {
-            width: 100%;
+            display: inline-block;
+            width: 93%;
             padding: 0.8rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -121,6 +124,8 @@
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
+            text-decoration: none;
+            text-align: center;
             transition: opacity 0.3s, transform 0.2s;
         }
 

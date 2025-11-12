@@ -1,0 +1,187 @@
+
+.place-details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+
+.hero-place {
+    
+    position: relative;
+    height: 400px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    
+}
+
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px 25px;
+    border-radius: 10px;
+}
+
+.hero-text h1 {
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+.hero-text p {
+    margin: 5px 0 0;
+    font-size: 1.2rem;
+}
+
+
+.place-info-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.place-description h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.place-description p {
+    line-height: 1.6;
+    color: #555;
+}
+
+.place-meta {
+   background: #a190ff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+}
+
+.place-meta h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.place-meta ul {
+    list-style: none;
+    padding: 0;
+}
+
+.place-meta li {
+    margin-bottom: 10px;
+    color: #555;
+}
+
+
+.gallery-section {
+    margin-bottom: 30px;
+    overflow: hidden; 
+}
+
+.gallery-section h2 {
+    color: black;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.gallery-grid {
+    display: flex;
+    width: 100%; 
+    gap: 15px;
+    padding: 10px;
+    animation: scroll-rtl 20s linear infinite;
+}
+
+@keyframes scroll-rtl {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-1 * (300px + 15px) * 4)); 
+    }
+}
+
+.gallery-grid img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.gallery-section:hover .gallery-grid {
+    animation-play-state: paused;
+}
+
+
+.reviews-section {
+    margin-bottom: 30px;
+}
+
+.reviews-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: black;
+}
+
+.review-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.review-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.review-author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.review-author h4 {
+    color: black;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.review-rating .fa-star {
+    color: #ffc107;
+}
+
+.review-text {
+    font-style: italic;
+    color: #555;
+}
+
+.map-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: black;
+}
+
+.map-container {
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}

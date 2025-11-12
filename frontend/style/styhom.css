@@ -432,7 +432,8 @@ header{
         }
 
         .view-details-btn {
-            width: 100%;
+                display: inline-block;
+            width: 93%;
             padding: 0.8rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -441,6 +442,8 @@ header{
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
+            text-decoration: none;
+            text-align: center;
             transition: opacity 0.3s, transform 0.2s;
         }
 

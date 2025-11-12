@@ -6,7 +6,7 @@ body{
   z-index: 1000;
    
   width: 100%;
-height: 400vh;
+
     width: auto;
     margin: 0%;
 }
@@ -33,11 +33,11 @@ form{
   width: 100%;
   height: 100%;
   
-  background-image: url('https://youmatter.world/app/uploads/2019/11/travel-world.jpg');
-  background-size: cover;       /* تغطي div بالكامل */
-  background-position: center;  /* تركز الصورة */
+  background-image: url('https://hblimg.mmtcdn.com/content/hubble/img/maldives/mmt/destination/m_Maldives_l_400_640.jpg');
+  background-size: cover;       
+  background-position: center; 
   background-repeat: no-repeat;
-  z-index: -1;                  /* تحت العناصر الأخرى */
+  z-index: -1;                  
 }
 header{
   margin-top: 20px;
@@ -188,6 +188,7 @@ display: inline-flex;
 }
 
 .search input{
+  color: black;
     padding-left: 20px;
     outline: none;
     border: none;

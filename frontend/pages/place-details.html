@@ -3,13 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-
-    </style>
+    <title>Place Details</title>
+    <link rel="stylesheet" href="../style/styhom.css">
+    <link rel="stylesheet" href="../style/places.css">
+    <link rel="stylesheet" href="../style/details.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <header>
+        <div id="divlogo">
+          <img src="../images/Travel.png" alt="" id="logo" />
+        </div>
+        <div id="button">
+          <a class="a" href="../index.html">Home</a>
+          <a class="a" href="countries.html">Countries</a>
+          <a class="a" href="palces.html">Places</a>
+          <a class="a" href="about.html">About</a>
+        </div>
+        <div id="login">
+          <div class="logdiv">
+            <a class="alogin" id="log" href="../auth/login.html">Log in</a>
+          </div>
+          <div class="logdiv" id="sin">
+            <a class="alogin" width="100px" href="../auth/register.html">Sign Up</a>
+          </div>  
+        </div>
+    </header>
 
+    <main class="place-details-container">
+        <section class="hero-place">
+            <img src="../images/pexels-rakicevic-nenad-233369-753994.jpg" alt="Main Place Image" class="hero-image">
+            <div class="hero-text">
+                <h1>Paris</h1>
+                <p><i class="fas fa-map-marker-alt"></i> France</p>
+            </div>
+        </section>
 
+        <section class="place-info-section">
+            <div class="place-description">
+                <h2>About Paris</h2>
+                <p>Paris, France's capital, is a major European city and a global center for art, fashion, gastronomy and culture. Its 19th-century cityscape is crisscrossed by wide boulevards and the River Seine. Beyond such landmarks as the Eiffel Tower and the 12th-century, Gothic Notre-Dame cathedral, the city is known for its cafe culture and designer boutiques along the Rue du Faubourg Saint-Honoré.</p>
+            </div>
+            <div class="place-meta">
+                <h3>Details</h3>
+                <ul>
+                    <li><strong>Country:</strong> France</li>
+                    <li><strong>Population:</strong> Approx. 2.1 million</li>
+                    <li><strong>Language:</strong> French</li>
+                    <li><strong>Currency:</strong> Euro (€)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <img src="../images/download.jpeg" alt="Gallery Image 1">
+                <img src="../images/bg.png" alt="Gallery Image 2">
+                <img src="../images/Group 1.png" alt="Gallery Image 3">
+                <img src="../images/Travel2.png" alt="Gallery Image 4">
+                <img src="../images/download.jpeg" alt="Gallery Image 1">
+                <img src="../images/bg.png" alt="Gallery Image 2">
+                <img src="../images/Group 1.png" alt="Gallery Image 3">
+                <img src="../images/Travel2.png" alt="Gallery Image 4">
+            </div>
+        </section>
+
+        <section class="reviews-section">
+            <h2>Reviews</h2>
+            <div class="review-card">
+                <div class="review-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User Avatar">
+                    <div>
+                        <h4>John Doe</h4>
+
+                    </div>
+                </div>
+                <p class="review-text">"An unforgettable experience! The views from the top are breathtaking. A must-visit for anyone traveling to Paris. I highly recommend going at sunset."</p>
+            </div>
+           
+        </section>
+
+        <section class="map-section">
+            <h2>Location</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.75769373311!2d2.277019441025422!3d48.8589506249423!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sen!2sus!4v1678885878912!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+          
+          <div class="footer-section">
+            <h3 class="footer-logo"> Travel</h3>
+            <p class="footer-description">
+              Your smart travel guide to discover the world's best destinations with AI-powered recommendations.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+          </div>
+      
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="countries.html">Countries</a></li>
+              <li><a href="palces.html"> Places</a></li>
+              <li><a href="chatbot.html">AI Assistant</a></li>
+              <li><a href="about.html">About Us</a></li>
+            </ul>
+          </div>
+      
+          
+          <div class="footer-section">
+            <h4>Contact Info</h4>
+            <div class="contact-info">
+              <p><i class="fas fa-envelope"></i>itsbilalchouichou@mail.com</p>
+              <p><i class="fas fa-phone"></i> +212 658013891</p>
+              <p><i class="fas fa-map-marker-alt"></i> Morocco</p>
+            </div>
+          </div>
+      
+        
+          <div class="footer-section">
+            <h4>Newsletter</h4>
+            <p>Subscribe to get travel updates</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Your email" required>
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+      
+        </div>
+      
+      
+        <div class="footer-bottom">
+          <p>&copy; 2025 Explo. All rights reserved. | Designed with ❤️ for travelers</p>
+        </div>
+      </footer>
 </body>
 </html>
