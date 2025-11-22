@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../style/styhom.css">
  
     <link rel="stylesheet" href="../style/places.css">
     <link rel="stylesheet" href="../style/countries.css">
@@ -23,12 +24,16 @@
           <a class="a" href="../pages/about.html">About</a>
         </div>
         <div id="login">
-          <div class="logdiv">
+          <div class="logdiv" id="loginButtons">
             <a class="alogin" id="log" href="../auth/login.html">Log in</a>
           </div>
           <div class="logdiv" id="sin">
             <a class="alogin" width="100px" href="../auth/register.html">Sign Up</a>
-          </div>  
+          </div>
+          <div class="logdiv" id="userInitial" style="display:none;">
+            <span id="initialCircle"></span>
+            <a href="#" id="logoutButton">Logout</a>
+          </div>
         </div>
       </header>
       <section class="hero">
@@ -137,4 +142,35 @@
 
 
 </body>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const userName = localStorage.getItem('userName');
+
+    if (userName) {
+      // Hide the login and signup button containers
+      document.getElementById("loginButtons").style.display = "none";
+      document.getElementById("sin").style.display = "none";
+
+      // Show the user initial
+      const userInitialDiv = document.getElementById("userInitial");
+      const initialSpan = document.getElementById("initialCircle");
+      initialSpan.textContent = userName.charAt(0).toUpperCase();
+      userInitialDiv.style.display = "flex";
+    }
+  });
+
+  document.getElementById("logoutButton").addEventListener("click", async (e) => {
+    e.preventDefault();
+    
+    // Call the backend to clear the cookie
+    await fetch("http://localhost:3000/logout", {
+      method: "POST",
+      credentials: "include"
+    });
+
+    // Clear localStorage and reload the page
+    localStorage.removeItem('userName');
+    window.location.reload();
+  });
+</script>
 </html>

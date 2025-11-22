@@ -15,7 +15,7 @@
       </header>
 
       <main>
- <form action="http://localhost:3000/register" method="post">
+ <form>
           
 
         
@@ -27,12 +27,12 @@
             <div class="singup">
           
           <h1>Register</h1>
-            <input type="text" placeholder="Username" name="username">
-          <input type="email" placeholder="Email" name="email" id="">
-          <input type="password" placeholder="password" name="password" id="">
+            <input type="text" placeholder="Username" name="username" required minlength="3">
+          <input type="email" placeholder="Email" name="email" required>
+          <input type="password" placeholder="password" name="password" required minlength="8">
+          <div id="error-message" style="color: red; margin-top: 10px;"></div>
           <div class="dbutton"><input type="submit" id="submit" value="Register"></div>
           </div>
-        </div>
         
        
 </form>
@@ -40,6 +40,7 @@
 </body>
 <script>
   const form = document.querySelector("form");
+  const errorMessage = document.getElementById("error-message");
 
   form.addEventListener("submit", async function (e) {
     e.preventDefault(); 
@@ -51,19 +52,30 @@
       password: formData.get("password")
     };
 
+    if (!data.username || data.username.length < 3) {
+      errorMessage.textContent = "Username must be at least 3 characters long.";
+      return;
+    }
+
+    if (!data.password || data.password.length < 8) {
+      errorMessage.textContent = "Password must be at least 8 characters long.";
+      return;
+    }
+
     const res = await fetch("http://localhost:3000/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify(data)
     });
 
     const result = await res.json();
 
     if (result.success) {
+      localStorage.setItem('userName', result.userName);
       window.location.href = "../index.html"; 
-      
     } else {
-      alert("error "); 
+      errorMessage.textContent = result.message || "An error occurred.";
     }
   });
 </script>

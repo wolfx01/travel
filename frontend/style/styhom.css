@@ -469,7 +469,39 @@ header{
 
     
    
+/* Styles for User Initial and Logout */
+#userInitial {
+  display: flex;
+  align-items: center;
+  gap: 25px; /* Space between circle and logout button */
+  width: auto;
+}
 
+#initialCircle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #007bff; /* A nice blue, can be changed */
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
 
+#logoutButton {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px 12px;
+  border: 1px solid white;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
 
-
+#logoutButton:hover {
+  background-color: white;
+  color: #1a1a1a; /* Or the header background color */
+}
