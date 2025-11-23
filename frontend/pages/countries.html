@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Countries - Travel Beyond Limits</title>
     <link rel="stylesheet" href="../style/styhom.css">
     <link rel="stylesheet" href="../style/places.css">
-    
     <link rel="stylesheet" href="../style/countries.css">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../style/chat.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -38,7 +37,6 @@
       </header>
       <section class="hero">
         <h1>Explore Our Destinations</h1>
-        <p>Choose from amazing countries around the world</p>
     </section>
     <section class="places-section">
         <div class="section-header">
@@ -46,38 +44,15 @@
             <p>Handpicked locations that will take your breath away</p>
         </div>
         <form action="">
-    <div class="search">
-        <input type="search" placeholder="">
-    <button type="submit"><i class="fa fa-search"></i></button>
-    </div>
-</form>
-<hr width="100%"  style="margin-bottom: 42px;">
+            <div class="search">
+                <input type="search" placeholder="Search countries...">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+        <hr width="100%"  style="margin-bottom: 42px;">
 
         <div class="places-grid">
-            <!-- Place Card 1 -->
-           <div class="country-card">
-                <div class="country-image-container">
-                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=400" alt="France" class="country-image">
-                </div>
-                <div class="country-info">
-                    <h3 class="country-name">France</h3>
-                    <div class="country-capital">Capital: Paris</div>
-                    <div class="country-stats">
-                        <div class="stat">
-                            <div class="stat-label">Population</div>
-                            <div class="stat-value">67M</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-label">Area</div>
-                            <div class="stat-value">643K km²</div>
-                        </div>
-                    </div>
-                    <p class="country-description">Home to the Eiffel Tower, exquisite cuisine, and timeless art.</p>
-                    <button class="explore-btn">Explore France</button>
-                </div>
-            </div>
-          
-
+            <!-- Countries will be loaded here dynamically -->
         </div>
     </section>
     <footer class="footer">
@@ -99,9 +74,9 @@
     <div class="footer-section">
       <h4>Quick Links</h4>
       <ul class="footer-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="pages/countries.html">Countries</a></li>
-        <li><a href="pages/palces.html"> Places</a></li>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="countries.html">Countries</a></li>
+        <li><a href="palces.html"> Places</a></li>
         <li><a href="chatbot.html">AI Assistant</a></li>
         <li><a href="about.html">About Us</a></li>
       </ul>
@@ -135,7 +110,23 @@
   </div>
 </footer>
 
+<!-- Chatbot Icon -->
+<div id="chat-icon">
+  <video src="../video/robot.mp4" autoplay loop muted playsinline></video>
+</div>
 
+<!-- Chat Window -->
+<div id="chat-window">
+  <div id="chatbox"></div>
+  <div class="input-container">
+    <input type="text" id="message" placeholder="write your message..." />
+    <button id="sendBtn">
+      <img src="../images/send-message.png" alt="Send" />
+    </button>
+  </div>
+</div>
+<script src="../js/chat.js"></script>
+<script src="../js/countries.js"></script>
 </body>
 <script>
   window.addEventListener("DOMContentLoaded", () => {

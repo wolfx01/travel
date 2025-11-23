@@ -82,14 +82,14 @@ app.post("/login", async (req, res) => {
       return res.json({ success: false, message: "Wrong password" });
     }
 
-    // إنشاء توكن JWT عند تسجيل الدخول
+  
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "7d",
     });
 
     res.cookie("authToken", token, {
       httpOnly: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 أيام
+      maxAge: 7 * 24 * 60 * 60 * 1000, 
       sameSite: 'Lax'
     });
 
@@ -125,6 +125,78 @@ app.post("/logout", (req, res) => {
     sameSite: 'Lax'
   }).json({ success: true });
 });
+app.post("/chat", async (req, res) => {
+  try {
+    const userMessage = req.body.message;
+
+    if (!process.env.OPENROUTER_API_KEY) {
+      return res.status(500).json({ reply: "Error: Missing API Key in server configuration." });
+    }
+
+    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: "gpt-4o-mini",
+        messages: [
+          { role: "system", content: "You are a helpful and knowledgeable travel guide assistant. You only answer questions related to travel, tourism, destinations, culture, and trip planning. If a user asks about anything else, politely decline and steer the conversation back to travel. You must reply in the same language the user speaks." },
+          { role: "user", content: userMessage }
+        ],
+        max_tokens: 1000
+      })
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("OpenRouter API Error:", errorData);
+      return res.status(500).json({ reply: "Sorry, I am having trouble connecting to my brain right now." });
+    }
+
+    const data = await response.json();
+    res.json({ reply: data.choices[0].message.content });
+  } catch (error) {
+    console.error("Chat Error:", error);
+    res.status(500).json({ reply: "An internal error occurred." });
+  }
+});
+
+app.get("/country-image", async (req, res) => {
+  try {
+    const country = req.query.country;
+    if (!country) {
+      return res.status(400).json({ error: "Country name is required" });
+    }
+
+    if (!process.env.UNSPLASH_ACCESS_KEY) {
+      console.error("Unsplash API Key missing");
+      return res.status(500).json({ error: "Server configuration error" });
+    }
+
+    const response = await fetch(`https://api.unsplash.com/search/photos?query=${encodeURIComponent(country)}%20landscape%20nature&orientation=landscape&per_page=1&client_id=${process.env.UNSPLASH_ACCESS_KEY}`);
+    
+    if (!response.ok) {
+      const errorData = await response.json();
+      console.error("Unsplash API Error:", errorData);
+      return res.status(500).json({ error: "Failed to fetch image" });
+    }
+
+    const data = await response.json();
+    if (data.results && data.results.length > 0) {
+      res.json({ imageUrl: data.results[0].urls.regular });
+    } else {
+      // Fallback if no image found
+      res.json({ imageUrl: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400' });
+    }
+  } catch (error) {
+    console.error("Image Fetch Error:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+
 
 
 

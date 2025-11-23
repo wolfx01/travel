@@ -13,19 +13,16 @@
         }
 
         .hero h1 {
-            color: black;
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+          position: relative;
+    top: 150px;
+   
+    color: black;
+    font-size: 3rem;
+    
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .hero p {
-              color: black;
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0.95;
-        }
+     
 
         /* Places Section */
         .places-section {
@@ -146,7 +143,7 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      animation: fade 32s infinite; /* عدد الثواني = 8 صور × 4 ثوانٍ لكل واحدة */
+      animation: fade 32s infinite; 
     }
 
     

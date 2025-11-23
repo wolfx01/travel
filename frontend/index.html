@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style/form.css" />
     <link rel="stylesheet" href="style/styhom.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style/chat.css">
   </head>
   <body>
     
@@ -35,7 +36,7 @@
       </header>
 
       <section class="hero">
-       <video class="vid" autoplay loop muted src="/frontend/video/1851190-uhd_3840_2160_25fps.mp4"></video>
+       <video class="vid" autoplay loop muted src="video/1851190-uhd_3840_2160_25fps.mp4"></video>
 
         <p class="btn">Travel beyond borders <br>   live beyond limits </p>
       </section>
@@ -71,6 +72,7 @@
         </div>
 
   </section>
+
   
 
 
@@ -188,10 +190,26 @@
   </div>
 </footer>
 
+<!-- Chatbot Icon -->
+<div id="chat-icon">
+  <video src="video/robot.mp4" autoplay loop muted playsinline></video>
+</div>
+
+<!-- Chat Window -->
+<div id="chat-window">
+  <div id="chatbox"></div>
+  <div class="input-container">
+    <input type="text" id="message" placeholder="write your message..." />
+    <button id="sendBtn">
+      <img src="images/send-message.png" alt="Send" />
+    </button>
+  </div>
+</div>
 
 
 
   </body>
+  <script src="js/chat.js"></script>
 <script>
   window.addEventListener("DOMContentLoaded", () => {
     const userName = localStorage.getItem('userName');
