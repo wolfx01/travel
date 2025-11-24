@@ -14,8 +14,16 @@ app.use(cors({
 }));
 app.use(cookieParser());
 
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
+
+const countriesData = require('../frontend/data/countries.json');
+
+app.get('/countries', (req, res) => {
+  res.json(countriesData);
+});
+
 
 
 
@@ -46,12 +54,12 @@ app.post("/register", async (req, res) => {
       newUser.password = hashedPassword;
       await newUser.save();
         const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-          expiresIn: "7d",
+          expiresIn: "365d",
         });
 
         res.cookie("authToken", token, {
           httpOnly: true,
-          maxAge: 7 * 24 * 60 * 60 * 1000,
+          maxAge: 365 * 24 * 60 * 60 * 1000,
           sameSite: 'Lax'
         });
 
@@ -84,12 +92,12 @@ app.post("/login", async (req, res) => {
 
   
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "7d",
+      expiresIn: "365d",
     });
 
     res.cookie("authToken", token, {
       httpOnly: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000, 
+      maxAge: 365 * 24 * 60 * 60 * 1000, 
       sameSite: 'Lax'
     });
 

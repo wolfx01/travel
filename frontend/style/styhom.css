@@ -268,9 +268,7 @@ header{
   padding: 0;
 }
 
-.footer-links li {
 
-}
 
 .footer-links a {
   color: #e0e0e0;
@@ -361,30 +359,12 @@ header{
   .contact-info p {
     justify-content: center;
   }
-  
-  .newsletter-form {
-    max-width: 300px;
-    margin: 0 auto;
-  }
 }
 
- .places-grid {
-    justify-content: space-evenly;
-    display: flex;
-    /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
-    gap: 2rem;
-    flex-wrap: wrap;
-        }
-
-        .place-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  .newsletter-form {
             transition: transform 0.3s, box-shadow 0.3s;
             cursor: pointer;
         }
-
         .place-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
@@ -502,5 +482,5 @@ header{
 
 #logoutButton:hover {
   background-color: white;
-  color: #1a1a1a; /* Or the header background color */
+  color: #1a1a1a;
 }
