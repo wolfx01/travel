@@ -3,7 +3,7 @@
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 65px; /* Reduced from 80px */
+  width: 65px;
   height: 65px;
   border-radius: 50%;
   cursor: pointer;
@@ -19,7 +19,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  mix-blend-mode: multiply; /* Attempts to make white background transparent */
+  mix-blend-mode: multiply; 
 }
 
 #chat-icon:hover {
@@ -27,7 +27,6 @@
   box-shadow: 0 6px 20px rgba(0,0,0,0.4);
 }
 
-/* نافذة الشات */
 #chat-window {
   position: fixed;
   bottom: 110px;
@@ -51,7 +50,6 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* زر الإغلاق */
 .close-btn-style {
   position: absolute;
   top: 10px;
@@ -77,7 +75,6 @@
   color: #000;
 }
 
-/* منطقة الرسائل */
 #chatbox {
   flex: 1;
   padding: 50px 15px 15px 15px;
@@ -97,7 +94,6 @@
   word-wrap: break-word;
 }
 
-/* رسائل المستخدم */
 .user-msg {
   align-self: flex-end;
   background-color: #007bff;
@@ -109,7 +105,7 @@
   color: rgba(255,255,255,0.8);
 }
 
-/* رسائل البوت */
+
 .bot-msg {
   align-self: flex-start;
   background-color: #e9ecef;
@@ -121,7 +117,7 @@
   color: #007bff;
 }
 
-/* منطقة الإدخال */
+
 .input-container {
   position: relative;
   margin: 0 10px 10px 10px;
@@ -130,14 +126,15 @@
 
 #message {
   border: 1px solid #ddd;
-  padding: 12px 45px 12px 15px; /* Extra right padding for the button */
+  padding: 12px 45px 12px 15px;
   width: 100%;
   border-radius: 25px;
   outline: none;
+  color: black;
   background: white;
   box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  box-sizing: border-box; /* Ensures padding doesn't affect width */
-  margin: 0; /* Reset margin since container handles it */
+  box-sizing: border-box;
+  margin: 0;
 }
 
 #message:focus {

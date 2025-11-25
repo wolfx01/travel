@@ -313,7 +313,6 @@ color: black;
 
 
 
-/* Footer Styles */
 .footer {
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   color: white;
@@ -371,7 +370,6 @@ color: black;
   transform: translateY(-3px);
 }
 
-/* روابط سريعة */
 .footer-links {
   list-style: none;
   padding: 0;
@@ -406,7 +404,6 @@ color: black;
   color: #00bcd4;
 }
 
-/* النشرة البريدية */
 .newsletter-form {
   display: flex;
   flex-direction: column;
