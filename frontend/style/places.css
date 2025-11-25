@@ -3,8 +3,7 @@
         }
         
         .hero {
-            background: 
-                        url('https://pohcdn.com/sites/default/files/styles/node__blog_post__bp_banner__blog_post_banner/public/2020-12/Greece.jpg') center/cover;
+            background: url('https://pohcdn.com/sites/default/files/styles/node__blog_post__bp_banner__blog_post_banner/public/2020-12/Greece.jpg') center/cover;
             color: white;
             text-align: center;
             padding: 6rem 2rem 4rem;
@@ -24,7 +23,6 @@
 
      
 
-        /* Places Section */
         .places-section {
             max-width: 1200px;
             margin: 0 auto;
