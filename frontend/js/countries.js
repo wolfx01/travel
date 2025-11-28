@@ -24,7 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
             
             allCountries = await response.json();
 
-            // Sort alphabetically
+            // Assign random ratings
+            allCountries.forEach(country => {
+                country.rating = (Math.random() * 2 + 3).toFixed(1); // 3.0 to 5.0
+            });
+
+            // Sort alphabetically by default
             allCountries.sort((a, b) => a.name.common.localeCompare(b.name.common));
 
             // Clear loading state and start rendering
@@ -113,8 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="stat-value">${area}</div>
                     </div>
                 </div>
+                <div class="country-rating" style="margin-top: 10px; color: #f1c40f;">
+                    <span class="stars">★</span>
+                    <span class="rating-text">(${country.rating}/5)</span>
+                </div>
                 <p class="country-description">Discover the beauty and culture of ${name}.</p>
-                <button class="explore-btn">Explore ${name}</button>
+                <a href="places.html?country=${encodeURIComponent(name)}" class="explore-btn" style="text-decoration: none; text-align: center; display: block;">Explore ${name}</a>
             </div>
         `;
 
@@ -140,5 +149,90 @@ document.addEventListener('DOMContentLoaded', () => {
             return (num / 1000).toFixed(1) + 'K';
         }
         return num.toString();
+    }
+
+    // Search functionality
+    const searchInput = document.querySelector('.search input');
+    const searchButton = document.querySelector('.search button');
+    const searchForm = document.querySelector('form');
+
+    function performSearch(e) {
+        if (e) e.preventDefault();
+        const searchTerm = searchInput.value.toLowerCase().trim();
+
+        // Filter countries
+        const filteredCountries = allCountries.filter(country => 
+            country.name.common.toLowerCase().includes(searchTerm)
+        );
+
+        // Reset grid and render filtered results
+        placesGrid.innerHTML = '';
+        
+        if (filteredCountries.length === 0) {
+            placesGrid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #333; font-size: 1.2rem;">No countries found.</p>';
+            return;
+        }
+
+        // We can reuse render logic or just render all filtered since client-side search usually returns manageable set
+        // But to keep infinite scroll logic simple, let's just render all matches if searching, 
+        // or we'd need to complexify the state. For simplicity in this task: render all matches.
+        
+        const fragment = document.createDocumentFragment();
+        filteredCountries.forEach(country => {
+            const card = createCountryCardElement(country);
+            fragment.appendChild(card);
+        });
+        placesGrid.appendChild(fragment);
+        
+        // Hide sentinel when searching to disable infinite scroll on filtered list (simple approach)
+        sentinel.style.display = 'none';
+    }
+
+    if (searchButton) searchButton.addEventListener('click', performSearch);
+    if (searchInput) searchInput.addEventListener('input', performSearch);
+    if (searchForm) searchForm.addEventListener('submit', performSearch);
+
+    // Sorting functionality
+    const sortAzBtn = document.getElementById('sort-az');
+    const sortPopBtn = document.getElementById('sort-pop');
+    const sortRatingBtn = document.getElementById('sort-rating');
+
+    function setActiveSortButton(btn) {
+        [sortAzBtn, sortPopBtn, sortRatingBtn].forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
+    function renderSortedCountries() {
+        placesGrid.innerHTML = '';
+        placesGrid.appendChild(sentinel);
+        
+        // Reset infinite scroll
+        displayedCount = 0;
+        sentinel.style.display = 'block';
+        renderNextBatch();
+    }
+
+    if (sortAzBtn) {
+        sortAzBtn.addEventListener('click', () => {
+            setActiveSortButton(sortAzBtn);
+            allCountries.sort((a, b) => a.name.common.localeCompare(b.name.common));
+            renderSortedCountries();
+        });
+    }
+
+    if (sortPopBtn) {
+        sortPopBtn.addEventListener('click', () => {
+            setActiveSortButton(sortPopBtn);
+            allCountries.sort((a, b) => b.population - a.population);
+            renderSortedCountries();
+        });
+    }
+
+    if (sortRatingBtn) {
+        sortRatingBtn.addEventListener('click', () => {
+            setActiveSortButton(sortRatingBtn);
+            allCountries.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
+            renderSortedCountries();
+        });
     }
 });

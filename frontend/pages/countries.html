@@ -35,9 +35,11 @@
           </div>
         </div>
       </header>
-      <section class="hero">
+      
+      <section id="kal">
         <h1>Explore Our Destinations</h1>
     </section>
+
     <section class="places-section">
         <div class="section-header">
             <h2>Popular Destinations</h2>
@@ -49,12 +51,18 @@
                 <button type="submit"><i class="fa fa-search"></i></button>
             </div>
         </form>
+        <div class="sort-controls" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 30px;">
+            <button id="sort-az" class="sort-btn">A-Z</button>
+            <button id="sort-pop" class="sort-btn">Most Popular</button>
+            <button id="sort-rating" class="sort-btn">Highest Rated</button>
+        </div>
         <hr width="100%"  style="margin-bottom: 42px;">
 
         <div class="places-grid">
             <!-- Countries will be loaded here dynamically -->
         </div>
     </section>
+
     <footer class="footer">
   <div class="footer-container">
     
@@ -76,7 +84,7 @@
       <ul class="footer-links">
         <li><a href="../index.html">Home</a></li>
         <li><a href="countries.html">Countries</a></li>
-        <li><a href="palces.html"> Places</a></li>
+        <li><a href="places.html">Places</a></li>
         <li><a href="chatbot.html">AI Assistant</a></li>
         <li><a href="about.html">About Us</a></li>
       </ul>

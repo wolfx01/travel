@@ -3,11 +3,11 @@
 }
 body{
  isolation: isolate;
-  z-index: 1000;
+ 
    
   width: 100%;
 
-    width: auto;
+   
     margin: 0%;
 }
 form{
@@ -17,27 +17,14 @@ form{
 }
 
 
-#kal{
-  position: relative; 
-  width: 100%;
-  height: 600px;      
-  overflow: hidden;   
-  z-index: 1; 
-     
-}
-#kal::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  
-  background-image: url('https://hblimg.mmtcdn.com/content/hubble/img/maldives/mmt/destination/m_Maldives_l_400_640.jpg');
-  background-size: cover;       
-  background-position: center; 
-  background-repeat: no-repeat;
-  z-index: -1;                  
+#kal {
+    background: url('https://pohcdn.com/sites/default/files/styles/node__blog_post__bp_banner__blog_post_banner/public/2020-12/Greece.jpg') center/cover;
+    color: white;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    height: 74vh;
+    image-rendering: pixelated;
+   
 }
 header{
 
@@ -151,15 +138,13 @@ header{
     color: black;
     content: "\f002";
 }
-#kal > h1{
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 55px;
-   color: yellow;
-    
-   
+#kal > h1 {
+    position: relative;
+    top: 150px;
+    color: black;
+    font-size: 3rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
 }
 
 
@@ -608,7 +593,7 @@ color: black;
         }
 
         .explore-btn {
-            width: 100%;
+            
             padding: 0.8rem;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
