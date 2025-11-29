@@ -49,7 +49,7 @@ async function sendMessage() {
   messageInput.value = "";
 
   try {
-    const res = await fetch("http://localhost:3000/chat", {
+    const res = await fetch("https://travel-backend-gamma-ten.vercel.app/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message })

@@ -173,7 +173,7 @@
     e.preventDefault();
     
     // Call the backend to clear the cookie
-    await fetch("http://localhost:3000/logout", {
+    await fetch("https://travel-backend-gamma-ten.vercel.app/logout", {
       method: "POST",
       credentials: "include"
     });

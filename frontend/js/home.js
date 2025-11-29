@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function fetchTopDestinations() {
     const grid = document.getElementById('top-destinations-grid');
     try {
-        const response = await fetch('http://localhost:3000/countries');
+        const response = await fetch('https://travel-backend-gamma-ten.vercel.app/countries');
         if (!response.ok) throw new Error('Failed to fetch countries');
         
         let countries = await response.json();
@@ -37,7 +37,7 @@ async function fetchTopPlaces() {
     const grid = document.getElementById('top-places-grid');
     try {
         // Fetch top 6 places sorted by rating
-        const response = await fetch('http://localhost:3000/places?limit=6&sort=rating');
+        const response = await fetch('https://travel-backend-gamma-ten.vercel.app/places?limit=6&sort=rating');
         if (!response.ok) throw new Error('Failed to fetch places');
         
         const data = await response.json();
@@ -92,7 +92,7 @@ function createCountryCard(country) {
     `;
 
     // Fetch dynamic image
-    fetch(`http://localhost:3000/country-image?country=${encodeURIComponent(name)}`)
+    fetch(`https://travel-backend-gamma-ten.vercel.app/country-image?country=${encodeURIComponent(name)}`)
         .then(res => res.json())
         .then(data => {
             if (data.imageUrl) {
@@ -132,7 +132,7 @@ function createPlaceCard(place) {
     `;
 
     // Fetch dynamic image
-    fetch(`http://localhost:3000/city-image?city=${encodeURIComponent(place.name)}&country=${encodeURIComponent(countryName)}`)
+    fetch(`https://travel-backend-gamma-ten.vercel.app/city-image?city=${encodeURIComponent(place.name)}&country=${encodeURIComponent(countryName)}`)
         .then(res => res.json())
         .then(data => {
             if (data.imageUrl) {

@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchCountries() {
         try {
-            const response = await fetch('http://localhost:3000/countries');
+            const response = await fetch('https://travel-backend-gamma-ten.vercel.app/countries');
             if (!response.ok) throw new Error('Failed to fetch countries');
             
             allCountries = await response.json();
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         // Fetch real image from backend
-        fetch(`http://localhost:3000/country-image?country=${encodeURIComponent(name)}`)
+        fetch(`https://travel-backend-gamma-ten.vercel.app/country-image?country=${encodeURIComponent(name)}`)
             .then(res => res.json())
             .then(data => {
                 if (data.imageUrl) {

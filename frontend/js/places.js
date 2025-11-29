@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isLoading || !hasMore) return;
         isLoading = true;
 
-        let url = `http://localhost:3000/places?page=${page}&limit=${limit}&sort=${sort}`;
+        let url = `https://travel-backend-gamma-ten.vercel.app/places?page=${page}&limit=${limit}&sort=${sort}`;
         if (countryParam) {
             url += `&country=${encodeURIComponent(countryParam)}`;
         }
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fragment.appendChild(card);
 
             // Always fetch real image from backend to match Countries page behavior
-            fetch(`http://localhost:3000/city-image?city=${encodeURIComponent(place.name)}&country=${encodeURIComponent(countryName)}`)
+            fetch(`https://travel-backend-gamma-ten.vercel.app/city-image?city=${encodeURIComponent(place.name)}&country=${encodeURIComponent(countryName)}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.imageUrl) {

@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function fetchPlaceDetails(id) {
         console.log(`Fetching details for place ID: ${id}`);
         try {
-            const response = await fetch(`http://localhost:3000/places/${id}`);
+            const response = await fetch(`https://travel-backend-gamma-ten.vercel.app/places/${id}`);
             console.log(`Response status: ${response.status}`);
             if (!response.ok) throw new Error('Failed to fetch place details');
             
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (heroLocation) heroLocation.innerHTML = `<i class="fas fa-map-marker-alt"></i> ${place.countryName}`;
 
         // Fetch dynamic image for hero
-        fetch(`http://localhost:3000/city-image?city=${encodeURIComponent(place.name)}&country=${encodeURIComponent(place.countryName)}`)
+        fetch(`https://travel-backend-gamma-ten.vercel.app/city-image?city=${encodeURIComponent(place.name)}&country=${encodeURIComponent(place.countryName)}`)
             .then(res => res.json())
             .then(data => {
                 if (data.imageUrl && heroImage) {
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Fetch Gallery Images (City + Country specific)
-        fetch(`http://localhost:3000/place-gallery?query=${encodeURIComponent(place.name + ' ' + place.countryName + ' tourism')}`)
+        fetch(`https://travel-backend-gamma-ten.vercel.app/place-gallery?query=${encodeURIComponent(place.name + ' ' + place.countryName + ' tourism')}`)
             .then(res => res.json())
             .then(data => {
                 const galleryGrid = document.querySelector('.gallery-grid');
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const placeId = new URLSearchParams(window.location.search).get('id');
 
             try {
-                const response = await fetch('http://localhost:3000/comments', {
+                const response = await fetch('https://travel-backend-gamma-ten.vercel.app/comments', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ placeId, userName, text })
@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function fetchComments(placeId) {
         try {
-            const response = await fetch(`http://localhost:3000/comments/${placeId}`);
+            const response = await fetch(`https://travel-backend-gamma-ten.vercel.app/comments/${placeId}`);
             const comments = await response.json();
             
             const commentsList = document.getElementById('comments-list');
