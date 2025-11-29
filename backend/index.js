@@ -683,7 +683,7 @@ app.post('/comments', async (req, res) => {
         res.json({ success: true, comment: newComment });
     } catch (error) {
         console.error("Error saving comment:", error);
-        res.status(500).json({ error: "Failed to save comment" });
+        res.status(500).json({ error: `Failed to save comment: ${error.message}` });
     }
 });
 
