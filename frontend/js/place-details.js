@@ -147,7 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('commentText').value = ''; // Clear textarea
                     fetchComments(placeId); // Reload comments
                 } else {
-                    alert('Failed to post comment');
+                    const errorData = await response.json();
+                    alert(`Failed to post comment: ${errorData.error || 'Unknown error'}`);
                 }
             } catch (error) {
                 console.error('Error posting comment:', error);
