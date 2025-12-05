@@ -7,18 +7,19 @@
             color: white;
             text-align: center;
             padding: 6rem 2rem 4rem;
-            height: 74vh;
+            min-height: 50vh;
             image-rendering: pixelated;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
 
         .places-hero h1 {
-          position: relative;
-    top: 150px;
-   
-    color: black;
-    font-size: 3rem;
-    
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
         }
 
      

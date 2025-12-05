@@ -22,128 +22,41 @@ form{
     color: white;
     text-align: center;
     padding: 6rem 2rem 4rem;
-    height: 74vh;
+    min-height: 50vh; /* Changed to min-height */
     image-rendering: pixelated;
-   
-}
-header{
-
-     
-
-  position: fixed;
-   
-  background-color: rgb(0 0 0 / 55%);
-   width: 100%;
     display: flex;
-    z-index: 1000; 
-    height: 70px;
-    justify-content: space-between;
-    align-items: center;
-
-}
-
-#logo{
-
-    
-      
-  
-   
-     width: 250px;   
-  height: auto;
-
-}
-
-.a{
-  font-size: 20px;
-  font-family: monospace;
-    margin: 50px;
-     text-decoration: none;
-     color: white;
-
-}
-.logdiv{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 40px;
-    width: 90px;
-    margin: 14px;
-    
-    
-        border: 2px ;
-  border-radius: 20px;
-  
-}
-
-#log{
-   color:  blue;
-}
-
-
-
-#login{
-  
-
-    display: flex;
+    flex-direction: column;
     justify-content: center;
-
-}
-.alogin{
-  font-size: 20px;
-  font-family: monospace;
-  
-  background-color: white;
-  border-radius: 40px;
-    width: 100px;
-    height: 45px;
     align-items: center;
-    display: flex;
-    justify-content: center;
-     text-decoration: none;
-     color: blue;
-    
-
 }
+
+/* Removed duplicate header styles */
+
 #vid{
     width: 100%;
-    height: px;
+    height: auto;
     object-fit: cover;    
     object-position: center;
 }
 
-
-
 .btn {
   position: absolute;
-
     top: 150px;
     left: 80px;
     font-size: 60px;
     font-family: fantasy;
-  
       color: #f98f22;
-  
 }
 
-#logo{
-
-    
-      
-  
-   
-     width: 250px;   
-  height: auto;
-}
 .fa-search:before {
     color: black;
     content: "\f002";
 }
 #kal > h1 {
-    position: relative;
-    top: 150px;
-    color: black;
+    /* Removed absolute positioning */
+    color: white; /* Changed to white for better contrast on image */
     font-size: 3rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin: 0;
 }
 

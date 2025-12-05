@@ -21,10 +21,10 @@
 body{
   
    background-color: #ecfffb;
-  width: 500%;
-height: 400vh;
-    width: auto;
-    margin: 0%;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  margin: 0;
 }
 
 header{
@@ -495,4 +495,158 @@ header{
 #logoutButton:hover {
   background-color: white;
   color: #1a1a1a;
+}
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar {
+        background-color: #333; /* Dark bars on light background */
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    header {
+        justify-content: space-between;
+        padding: 0 20px;
+        height: 70px;
+        background-color: rgba(255, 255, 255, 0.95); /* Light header */
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    #logo {
+        width: 140px;
+        margin: 0;
+    }
+
+    /* Combined Mobile Menu Container */
+    #button {
+        display: flex; /* Added display: flex */
+        position: fixed;
+        left: 0;
+        top: 70px;
+        width: 100%;
+        height: calc(100vh - 70px); /* Full height minus header */
+        background: rgba(255, 255, 255, 0.98); /* Solid light background */
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 40px;
+        transform: translateX(100%); /* Slide from right */
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: none;
+        z-index: 998;
+    }
+
+    #button.active {
+        transform: translateX(0);
+        left: 0; /* Ensure it stays at 0 */
+    }
+
+    .a {
+        margin: 20px 0;
+        font-size: 1.5rem;
+        color: #333;
+        font-weight: 600;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    /* Staggered animation for links */
+    #button.active .a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    #button.active .a:nth-child(1) { transition-delay: 0.1s; }
+    #button.active .a:nth-child(2) { transition-delay: 0.2s; }
+    #button.active .a:nth-child(3) { transition-delay: 0.3s; }
+    #button.active .a:nth-child(4) { transition-delay: 0.4s; }
+
+    /* Auth Buttons in Mobile Menu */
+    #login {
+        position: fixed; /* Keep fixed to animate with menu */
+        top: auto;
+        bottom: 50px; /* Position at bottom */
+        left: 0;
+        width: 100%;
+        flex-direction: row; /* Side by side */
+        justify-content: center;
+        gap: 20px;
+        background: transparent;
+        transform: translateX(100%);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 999;
+        margin: 0;
+        padding: 0;
+    }
+
+    #login.active {
+        transform: translateX(0);
+    }
+
+    .logdiv {
+        margin: 0;
+        width: auto;
+    }
+
+    .alogin {
+        width: 120px;
+        height: 45px;
+        font-size: 1rem;
+        border-radius: 25px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    /* Style specific buttons */
+    #log {
+        background-color: white;
+        color: #00bcd4;
+        border: 2px solid #00bcd4;
+    }
+
+    #sin .alogin {
+        background-color: #00bcd4;
+        color: white;
+        border: none;
+    }
+
+    .btn {
+        font-size: 2rem;
+        width: 90%;
+    }
+    
+    .vid {
+        height: 50vh;
+    }
 }

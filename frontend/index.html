@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <link rel="stylesheet" href="style/countries.css">
     <link rel="stylesheet" href="style/places.css">
@@ -15,6 +16,11 @@
       <header>
         <div id="divlogo">
           <img src="images/Travel.png" alt="" id="logo" />
+        </div>
+        <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
         <div id="button">
           <a class="a" href="index.html">Home</a>
@@ -174,6 +180,7 @@
   </body>
   <script src="js/home.js"></script>
   <script src="js/chat.js"></script>
+  <script src="js/mobile-menu.js"></script>
 <script>
   window.addEventListener("DOMContentLoaded", () => {
     const userName = localStorage.getItem('userName');
