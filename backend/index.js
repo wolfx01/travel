@@ -1,15 +1,4 @@
 const express = require("express");
-const app = express();
-const jwt = require("jsonwebtoken");
-require('dotenv').config();
-
-const db = require('./db')
-const User = require('./models/user')
-const cors = require("cors");
-const bcrypt = require("bcryptjs");
-const cookieParser = require("cookie-parser");
-app.use(cors({
-  origin: true, // Allow all origins for development
   credentials: true
 }));
 app.use(cookieParser());
@@ -179,6 +168,22 @@ async function fetchPlaceDetailsFromGemini(city, country) {
     return placeDetailsCache.get(cacheKey);
   }
 
+  // 1. Check MongoDB Cache
+  try {
+    const cachedDoc = await PlaceDetails.findOne({ placeName: city, country: country });
+    if (cachedDoc) {
+      console.log("[Gemini] Returning details from MongoDB");
+      return {
+        description: cachedDoc.description,
+        currency: cachedDoc.currency,
+        language: cachedDoc.language
+      };
+    }
+  } catch (dbError) {
+    console.error("[Gemini] DB Cache Read Error:", dbError);
+    // Continue to fetch from API if DB fails
+  }
+
   try {
     const prompt = `Provide the following details for ${city}, ${country} in JSON format:
     {
@@ -189,8 +194,8 @@ async function fetchPlaceDetailsFromGemini(city, country) {
     Only return the JSON object, no markdown.`;
 
     console.log("[Gemini] Sending request to API...");
-    // Using gemini-2.0-flash as successfully tested by the user
-    const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`, {
+    // Using gemini-1.5-flash as successfully tested by the user
+    const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -223,6 +228,25 @@ async function fetchPlaceDetailsFromGemini(city, country) {
     // Clean up potential markdown code blocks
     const jsonStr = text.replace(/```json/g, '').replace(/```/g, '').trim();
     const details = JSON.parse(jsonStr);
+
+    // 2. Save to MongoDB
+    try {
+      await PlaceDetails.findOneAndUpdate(
+        { placeName: city, country: country },
+        {
+          placeName: city,
+          country: country,
+          description: details.description,
+          currency: details.currency,
+          language: details.language,
+          lastUpdated: new Date()
+        },
+        { upsert: true, new: true }
+      );
+      console.log("[Gemini] Saved details to MongoDB");
+    } catch (saveError) {
+      console.error("[Gemini] DB Save Error:", saveError);
+    }
 
     placeDetailsCache.set(cacheKey, details);
     return details;
