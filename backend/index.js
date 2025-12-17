@@ -38,17 +38,15 @@ async function fetchWithRetry(url, options, retries = 3, backoff = 1000) {
         await new Promise(resolve => setTimeout(resolve, backoff));
         return fetchWithRetry(url, options, retries - 1, backoff * 2);
       } else {
-        throw new Error("Rate limit exceeded after multiple retries");
+        const error = new Error("Rate limit exceeded after multiple retries");
+        error.status = 429;
+        throw error;
       }
     }
     
     return response;
   } catch (error) {
-    // If it's a network error or something else that might be transient, we could retry too,
-    // but for now let's focus on 429s or just re-throw if it's not a 429 we caught above.
-    // Actually, if fetch throws (network error), we might want to retry as well?
-    // Let's stick to the plan: handle 429 specifically, but also maybe network errors if we want to be robust.
-    // For this specific task, let's just rethrow if it wasn't a 429 recursion.
+    if (error.status === 429) throw error; // Re-throw our custom error
     throw error;
   }
 }
@@ -271,8 +269,9 @@ app.get('/places/:id', async (req, res) => {
       rating: curated ? curated.rating : getStableRating(city.name),
       image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=400', // Frontend will fetch dynamic image
       description: geminiDetails?.description || (curated ? curated.description : `A beautiful city in ${regionNames.of(city.country)} with a population of ${city.population.toLocaleString()}. Discover the local culture, cuisine, and stunning views.`),
-      currency: geminiDetails?.currency || (geminiDetails?.error ? `Error: ${geminiDetails.error}` : "Unknown"),
-      language: geminiDetails?.language || (geminiDetails?.error ? `Error: ${geminiDetails.error}` : "Unknown")
+      description: geminiDetails?.description || (curated ? curated.description : `A beautiful city in ${regionNames.of(city.country)} with a population of ${city.population.toLocaleString()}. Discover the local culture, cuisine, and stunning views.`),
+      currency: (geminiDetails?.currency && !geminiDetails.error) ? geminiDetails.currency : "Unknown",
+      language: (geminiDetails?.language && !geminiDetails.error) ? geminiDetails.language : "Unknown"
     };
 
     res.json(placeDetails);
@@ -441,6 +440,9 @@ app.post("/chat", async (req, res) => {
 
   } catch (error) {
     console.error("Chat Error:", error);
+    if (error.status === 429) {
+      return res.status(429).json({ reply: "I'm currently receiving too many messages. Please try again in a few seconds." });
+    }
     res.status(500).json({ reply: "An internal error occurred." });
   }
 });

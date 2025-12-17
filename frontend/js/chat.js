@@ -56,6 +56,17 @@ async function sendMessage() {
     });
 
     const data = await res.json();
+
+    if (!res.ok) {
+      // If server returned an error message (like our 429 message), use it
+      if (data.reply) {
+        appendMessage(data.reply, "bot-msg");
+        saveMessage("bot-msg", data.reply);
+      } else {
+        throw new Error(res.statusText);
+      }
+      return;
+    }
     
     // 2. Add Bot Message
     appendMessage(data.reply, "bot-msg");
