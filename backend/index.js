@@ -27,6 +27,32 @@ cities.forEach((city, index) => {
 
 const curatedPlaces = require('./data/places.json');
 
+// Helper function for fetch with retry
+async function fetchWithRetry(url, options, retries = 3, backoff = 1000) {
+  try {
+    const response = await fetch(url, options);
+    
+    if (response.status === 429) {
+      if (retries > 0) {
+        console.warn(`[Gemini] Rate limit hit (429). Retrying in ${backoff}ms... (${retries} retries left)`);
+        await new Promise(resolve => setTimeout(resolve, backoff));
+        return fetchWithRetry(url, options, retries - 1, backoff * 2);
+      } else {
+        throw new Error("Rate limit exceeded after multiple retries");
+      }
+    }
+    
+    return response;
+  } catch (error) {
+    // If it's a network error or something else that might be transient, we could retry too,
+    // but for now let's focus on 429s or just re-throw if it's not a 429 we caught above.
+    // Actually, if fetch throws (network error), we might want to retry as well?
+    // Let's stick to the plan: handle 429 specifically, but also maybe network errors if we want to be robust.
+    // For this specific task, let's just rethrow if it wasn't a 429 recursion.
+    throw error;
+  }
+}
+
 // Create a map for faster lookup of curated places
 // Create a map for faster lookup of curated places
 const curatedPlacesMap = new Map(curatedPlaces.map(p => [p.name.toLowerCase(), p]));
@@ -166,7 +192,7 @@ async function fetchPlaceDetailsFromGemini(city, country) {
 
     console.log("[Gemini] Sending request to API...");
     // Using gemini-2.0-flash as successfully tested by the user
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`, {
+    const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -376,7 +402,7 @@ app.post("/chat", async (req, res) => {
       return res.status(500).json({ reply: "Error: Missing API Key in server configuration." });
     }
 
-    const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`, {
+    const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
