@@ -1,4 +1,16 @@
 const express = require("express");
+const app = express();
+const jwt = require("jsonwebtoken");
+require('dotenv').config();
+
+const db = require('./db')
+const User = require('./models/user')
+const PlaceDetails = require('./models/placeDetails');
+const cors = require("cors");
+const bcrypt = require("bcryptjs");
+const cookieParser = require("cookie-parser");
+app.use(cors({
+  origin: true, // Allow all origins for development
   credentials: true
 }));
 app.use(cookieParser());
