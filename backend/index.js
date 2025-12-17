@@ -433,11 +433,14 @@ app.post("/chat", async (req, res) => {
   try {
     const userMessage = req.body.message;
 
-    if (!process.env.GEMINI_API_KEY) {
+    let apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey) {
       return res.status(500).json({ reply: "Error: Missing API Key in server configuration." });
     }
+    // Sanitize key: remove whitespace and quotes
+    apiKey = apiKey.trim().replace(/^["']|["']$/g, '');
 
-    const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`, {
+    const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -461,7 +464,7 @@ app.post("/chat", async (req, res) => {
     if (!response.ok) {
       const errorText = await response.text();
       console.error("Gemini Chat API Error:", errorText);
-      return res.status(500).json({ reply: "Sorry, I am having trouble connecting to my brain right now." });
+      return res.status(500).json({ reply: `I'm having trouble connecting. Google API Error: ${errorText}` });
     }
 
     const data = await response.json();
