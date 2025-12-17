@@ -207,7 +207,7 @@ async function fetchPlaceDetailsFromGemini(city, country) {
 
     console.log("[Gemini] Sending request to API...");
     // Using gemini-1.5-flash as successfully tested by the user
-    const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`, {
+    const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${process.env.GEMINI_API_KEY}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -440,7 +440,7 @@ app.post("/chat", async (req, res) => {
     // Sanitize key: remove whitespace and quotes
     apiKey = apiKey.trim().replace(/^["']|["']$/g, '');
 
-    const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+    const response = await fetchWithRetry(`https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${apiKey}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
